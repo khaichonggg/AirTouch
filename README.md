@@ -4,66 +4,123 @@
 
 # AirTouch
 
-**Move, click, and drag on Windows with hand gestures and an ordinary webcam.** AirTouch is an independent computer vision prototype built with Python, MediaPipe and OpenCV. It tracks hand landmarks locally and translates gestures into mouse input across Windows apps.
+**Turn a regular webcam into a hands-free mouse for Windows.** Point to move the cursor, tap your fingers together to click, and hold the pinch to drag. AirTouch sends standard mouse input, so you can try it in the Windows apps you already use.
 
-![Platform: Windows](https://img.shields.io/badge/platform-Windows-0f766e)
+![Windows](https://img.shields.io/badge/platform-Windows-0f766e)
 ![Python 3.12](https://img.shields.io/badge/Python-3.12-1e293b)
-![Status: prototype](https://img.shields.io/badge/status-prototype-334155)
+![Prototype](https://img.shields.io/badge/status-prototype-334155)
 
-![Illustrated AirTouch gesture walkthrough in relative cursor mode](docs/media/gestures.gif)
+[Download source ZIP](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) · [Install from CMD](#install-from-windows-cmd) · [Learn the gestures](#gestures) · [Troubleshoot](#troubleshooting)
 
-*Illustrated walkthrough in relative cursor mode. This is not live webcam footage.*
+## Why AirTouch?
 
-## Get started
+- **Use the webcam you already have.** No special controller, depth camera, or wearable. A built-in or USB webcam is enough to get started.
+- **Switch it on when you need it.** The tray icon starts off. One click turns tracking on, and another turns it off and releases the camera. Tray mode needs no open preview window.
+- **Keep the pointer responsive.** The camera runs on a background thread. AirTouch processes the latest new frame instead of working through a queue of old frames. Cursor smoothing helps tame small hand movements. Actual responsiveness depends on your webcam, lighting, and computer.
+- **Choose how the pointer moves.** Absolute mode maps your hand position to the screen. Relative mode works more like a touchpad: move your finger a little to move the cursor a little.
+- **Keep video on your computer.** The standard workflow processes webcam frames locally without recording or uploading video. The first setup needs internet access to install libraries and download the hand tracking model.
 
-You need **Windows 10 or 11**, **64-bit Python 3.12**, and a working webcam. The first setup needs internet access to install dependencies and download the MediaPipe hand model.
+## What you need
 
-1. [Download the source ZIP](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) and extract it.
-2. Double-click **`setup.bat`**. Wait for the setup to finish.
-3. Double-click **`tray.bat`**. Find the grey hand icon in the Windows notification area (check the **^** menu if it is hidden) and click it to turn tracking on. The icon turns teal.
-4. Click the hand icon again to pause tracking and release the camera. Right-click it and choose **Quit** to exit.
+- **Windows 10 or 11**, 64-bit.
+- **[Python 3.12 for Windows](https://www.python.org/downloads/windows/)**, 64-bit. In the Python installer, enable **Add python.exe to PATH** and keep the Python launcher enabled if offered.
+- A working webcam and permission for desktop apps to access it.
+- Internet access for the first setup. Git is optional.
 
-> Prefer to see what the camera sees? Start **`run.bat`** instead of `tray.bat`. Press **Q** or **Esc**, or close the preview window, to quit. Start only one mode at a time.
+## Quick install: double-click
+
+1. [Download AirTouch](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) and **extract the ZIP** to a normal folder. Open the extracted folder containing `install.py` and `setup.bat`.
+2. Double-click **`setup.bat`**. It creates a local Python environment, installs the required libraries, and downloads the hand tracking model. Wait for setup to finish.
+3. Double-click **`tray.bat`**. Look for a **grey hand** in the Windows notification area (check the **^** overflow menu). Click it to start tracking. It turns **teal**.
+4. Click the hand icon again to turn tracking off. To close AirTouch completely, right-click the hand and select **Quit**.
+
+<img src="docs/images/tray_off.png" width="38" alt="Grey hand: tracking off"> **Off** &nbsp;&nbsp; <img src="docs/images/tray_on.png" width="38" alt="Teal hand: tracking on"> **On**
+
+## Install from Windows CMD
+
+**From the ZIP:** extract it, open the folder containing `install.py` in File Explorer, type `cmd` in the address bar, and press **Enter**. Skip the Git commands.
+
+**Or clone the repository:** if [Git](https://git-scm.com/download/win) is already installed, open **Command Prompt** in a folder where you want to keep AirTouch:
+
+```bat
+git clone https://github.com/khaichonggg/AirTouch.git
+cd AirTouch
+```
+
+**Install from inside the project folder:**
+
+```bat
+chcp 65001
+py -3.12 --version
+py -3.12 install.py
+```
+
+If `py` is not recognised but `python --version` reports **Python 3.12.x**, use `python install.py` instead. No virtual environment activation or administrator terminal is needed for the project setup.
+
+**Check the installation without opening the camera:**
+
+```bat
+run.bat --help
+.venv\Scripts\python.exe -m pip check
+.venv\Scripts\python.exe simulate.py --quiet --no-render --engine rule
+```
+
+The last command should report **13 scenarios passed and 0 failed**. Then choose one way to start:
+
+| Command | What it does | How to stop |
+| --- | --- | --- |
+| `tray.bat` | Starts the tray switch with tracking off. Click the hand to enable. | Click the hand to turn tracking off, or right-click → **Quit**. |
+| `run.bat` | Opens the camera preview so you can see the tracking and learn the gestures. | Press **Q** or **Esc**, or close the preview. |
+| `run.bat --lite` | Runs tracking in the terminal without a camera preview. | Press **Ctrl+C**. |
+
+Use one mode at a time so they don't compete for the same webcam. The preview also supports **P** to pause or resume cursor control.
 
 ## Gestures
+
+Keep your hand within the camera frame. Try the preview first in a well-lit room.
 
 | Action | Gesture |
 | --- | --- |
 | Move | Point your index finger and move your hand. |
-| Left-click | Briefly pinch thumb and index finger, then release. |
-| Drag | Hold the thumb–index pinch until the button engages. Move your hand, then release to drop. |
+| Left-click | Briefly touch your thumb and index finger together, then release. |
+| Drag and drop | Pinch thumb and index finger and hold until the button engages. Move your hand while holding, then release to drop. |
 | Right-click | Briefly pinch thumb and middle finger, then release. |
-| Scroll | Raise index and middle fingers in a V, then move vertically. |
-| Pause movement | Make a fist, or turn tracking off from the tray. |
+| Scroll | Raise your index and middle fingers in a V and move your hand vertically. |
+| Pause pointer movement | Make a fist. To release the camera, switch tracking off in the tray or quit the preview. |
 
-AirTouch defaults to **absolute** cursor mapping. To try the **relative** movement shown above, copy `config.example.json` to `config.json`, set `"cursor_mode": "relative"`, and restart. Keep your hand in frame and start in good lighting. A short tap clicks; a sustained pinch drags.
+To try relative movement, copy `config.example.json` to `config.json` **if you don't already have a config**, change `"cursor_mode"` to `"relative"`, and restart AirTouch. The default is `"absolute"`. Run `run.bat --help` to see more options, including a camera index and optional dwell clicking.
 
-## How it works
+## Troubleshooting
+
+| If you see… | Try this |
+| --- | --- |
+| `py` is not recognised | Install 64-bit Python 3.12, then close and reopen CMD. If `python --version` reports 3.12.x, use the `python` command instead. |
+| `install.py` cannot be found | Open CMD from the extracted folder that contains `install.py`. Use `dir install.py` to check. |
+| Setup fails while installing libraries | Check your internet connection, confirm Python 3.12, and rerun `py -3.12 install.py`. |
+| The hand model download fails | Once the libraries are installed, run `.venv\Scripts\python.exe -m airtouch.download_model` to retry the model download. |
+| No picture or no hand detected | Open `run.bat` to check the preview. Allow desktop apps to access your camera in Windows settings, close other apps using it, and improve the lighting. If you have a second webcam, try `run.bat --camera 1`. |
+| Pointer feels slow or shaky | Put the light in front of you, keep your whole hand visible, and try `run.bat --lite` to skip drawing the preview. Performance varies with hardware. |
+
+## Under the hood
 
 ```text
-Webcam → MediaPipe hand landmarks → gesture recognition → Windows mouse input
+Webcam → newest frame → MediaPipe hand landmarks → gesture rules → Windows mouse input
 ```
 
-- The default gesture engine uses rules and runs on-device. An optional classifier can be trained locally; no classifier weights are bundled.
-- The tray starts with tracking off. When tracking is on, the app reads frames locally. The standard workflow does not upload or record webcam video. The tray writes diagnostic logs locally.
-- This is a prototype. Lighting, camera frame rate, and how clearly the fingers are visible affect responsiveness and accuracy.
+The default engine uses rules to recognise gestures. AirTouch tracks a pinch over time so a short tap can click and a sustained pinch can drag. The controller releases held mouse buttons on interruption or hand loss rather than leaving an unfinished drag active.
 
-## Run the checks
+An optional classifier can be trained on generated landmarks. No classifier weights are bundled. The tray writes diagnostic logs locally; the standard workflow does not save webcam footage.
 
-From PowerShell in the extracted folder, after setup:
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe simulate.py --quiet --no-render --engine rule
+```bat
+.venv\Scripts\python.exe -m pytest -q
+.venv\Scripts\python.exe -m ml.train_model --synthetic 300
+run.bat --engine ml
 ```
 
-The simulator uses synthetic gestures and does not control the real pointer. The tests exercise gesture recognition, input cleanup, and camera and tray recovery. To try the optional local classifier:
+The first command runs the test suite. The other two are optional and only needed to try the trained classifier. AirTouch is an experimental input tool; it works best with a clear view of the hand and consistent lighting.
 
-```powershell
-.\.venv\Scripts\python.exe -m ml.train_model --synthetic 300
-.\run.bat --engine ml
-```
+## Credits and usage
 
-## Credits
+AirTouch by **Khaichong Ew**. The [MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) model is downloaded separately during setup.
 
-AirTouch by **Khaichong Ew**. The [MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) model is downloaded separately during setup; third-party packages and models retain their respective licenses.
+**AirTouch project code and assets are not licensed for commercial use.** All rights reserved. Public visibility on GitHub does not grant a commercial license. Third-party packages and the MediaPipe model retain their respective licenses.
