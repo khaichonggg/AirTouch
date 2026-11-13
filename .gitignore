@@ -1,0 +1,29 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Participant data stays private (see docs/USER_STUDY_PROTOCOL.md)
+evaluation/results/
+
+# Created while running
+logs/
+images/
+
+# User-local settings
+config.json
+
+# Downloaded once by airtouch/download_model.py
+models/hand_landmarker.task
+
+# Personal gesture recordings
+data/recorded.csv
+
+# Local training artifacts and generated data
+/models/*.joblib
+/models/training_report.json
+/models/*.part
+/data/
+.env
+.env.*
