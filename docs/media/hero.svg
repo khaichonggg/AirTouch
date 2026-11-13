@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="384" viewBox="0 0 1280 384" role="img" aria-labelledby="title description">
+  <title id="title">AirTouch</title>
+  <desc id="description">A Windows webcam gesture mouse. An illustrated index finger guides the pointer across the screen.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#0A1925"/>
+      <stop offset="1" stop-color="#112F3B"/>
+    </linearGradient>
+    <linearGradient id="panel" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#112A38"/>
+      <stop offset="1" stop-color="#102432"/>
+    </linearGradient>
+    <linearGradient id="trajectory" x1="755" y1="212" x2="1063" y2="156" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66EAD0" stop-opacity=".15"/>
+      <stop offset="1" stop-color="#66EAD0"/>
+    </linearGradient>
+    <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.25" fill="#274A58"/>
+    </pattern>
+  </defs>
+  <rect x=".75" y=".75" width="1278.5" height="382.5" rx="31" fill="url(#background)" stroke="#2D5360" stroke-width="1.5"/>
+  <path d="M664 52v280" stroke="#2C4D5B"/>
+  <g transform="translate(60 64)" fill="none" stroke="#66EAD0" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0h24v24M0 10v14h14"/>
+    <circle cx="12" cy="12" r="2.6" fill="#66EAD0" stroke="none"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="101" y="83" fill="#9CC6CA" font-size="16" font-weight="600" letter-spacing="2.6">WINDOWS WEBCAM MOUSE</text>
+    <text x="55" y="218" fill="#F2FCFC" font-size="105" font-weight="700" letter-spacing="-4">AirTouch</text>
+    <text x="62" y="274" fill="#B7CDD3" font-size="27">Control your mouse with hand gestures.</text>
+  </g>
+  <rect x="708" y="50" width="518" height="284" rx="23" fill="url(#panel)" stroke="#355666" stroke-width="1.5"/>
+  <rect x="721" y="64" width="492" height="256" rx="15" fill="url(#grid)"/>
+  <g fill="none" stroke="#487782" stroke-width="1.5" stroke-linecap="round">
+    <path d="M726 80v-12h12m458 0h12v12m0 224v12h-12m-458 0h-12v-12"/>
+    <path d="M1012 148h104m-52-52v104" stroke="#30515E"/>
+    <circle cx="1064" cy="148" r="47"/>
+    <circle cx="1064" cy="148" r="31"/>
+    <circle cx="1064" cy="148" r="15" stroke="#66EAD0" opacity=".75"/>
+  </g>
+  <path d="M820 137C882 95 970 201 1064 148" fill="none" stroke="#294E58" stroke-width="9" opacity=".4"/>
+  <path d="M820 137C882 95 970 201 1064 148" fill="none" stroke="url(#trajectory)" stroke-width="2.4" stroke-dasharray="6 8" stroke-linecap="round"/>
+  <g transform="translate(732 117) scale(1.35)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M91 143 57 111 78 84 99 79 118 87 133 101Z" fill="#1A4549" stroke="#497A85" stroke-width="2"/>
+    <path d="M57 111 35 92 43 74 55 64M99 79 104 61 116 68 108 83M118 87 125 70 137 79 128 93M133 101 146 88 155 97 148 111" stroke="#98BEC7" stroke-width="2.5"/>
+    <path d="M78 84 76 58 75 32 74 14" stroke="#66EAD0" stroke-width="3"/>
+    <path d="M35 92h.1M43 74h.1M55 64h.1M57 111h.1M99 79h.1M104 61h.1M116 68h.1M108 83h.1M118 87h.1M125 70h.1M137 79h.1M128 93h.1M133 101h.1M146 88h.1M155 97h.1M148 111h.1" stroke="#B2D3D8" stroke-width="5"/>
+    <path d="M78 84h.1M76 58h.1M75 32h.1M74 14h.1" stroke="#66EAD0" stroke-width="5.5"/>
+    <circle cx="74" cy="14" r="8.5" stroke="#66EAD0" opacity=".55"/>
+    <circle cx="91" cy="143" r="3.5" fill="#102432" stroke="#75A7AE" stroke-width="1.5"/>
+  </g>
+  <path d="M1066 149v51l13-13 11 22 10-5-11-22h20Z" fill="#081B26" stroke="#081B26" stroke-width="5" stroke-linejoin="round" transform="translate(2 4)"/>
+  <path d="M1066 149v51l13-13 11 22 10-5-11-22h20Z" fill="#F2FCFC" stroke="#081B26" stroke-width="2" stroke-linejoin="round"/>
+</svg>
