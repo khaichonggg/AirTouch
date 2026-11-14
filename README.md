@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/media/hero.svg" alt="AirTouch — hand gestures as Windows mouse input" width="860">
+  <img src="docs/media/hero-v2.png" alt="AirTouch — hand gestures as Windows mouse input" width="860">
 </p>
 
 # AirTouch
