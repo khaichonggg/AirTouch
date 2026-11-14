@@ -2,7 +2,7 @@
   <img src="docs/media/hero-v2.png" alt="AirTouch — hand gestures as Windows mouse input" width="860">
 </p>
 
-# AirTouch
+# AirTouch — Webcam Gesture Mouse for Windows
 
 **Turn a regular webcam into a hands-free mouse for Windows.** Point to move the cursor, tap your fingers together to click, and hold the pinch to drag. AirTouch sends standard mouse input, so you can try it in the Windows apps you already use.
 
