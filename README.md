@@ -10,6 +10,8 @@
 ![Python 3.12](https://img.shields.io/badge/Python-3.12-1e293b)
 ![Prototype](https://img.shields.io/badge/status-prototype-334155)
 
+https://github.com/user-attachments/assets/b2bc5bae-709a-4629-b632-84941c8c85fd
+
 [Download source ZIP](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) · [Install from CMD](#install-from-windows-cmd) · [Learn the gestures](#gestures) · [Troubleshoot](#troubleshooting)
 
 ## Why AirTouch?
