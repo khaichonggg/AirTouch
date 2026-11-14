@@ -12,7 +12,7 @@
 
 https://github.com/user-attachments/assets/b2bc5bae-709a-4629-b632-84941c8c85fd
 
-[Download source ZIP](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) · [Install from CMD](#install-from-windows-cmd) · [Learn the gestures](#gestures) · [Troubleshoot](#troubleshooting)
+[v2.0.0 Preview](https://github.com/khaichonggg/AirTouch/releases/tag/v2.0.0-preview) · [Download source ZIP](https://github.com/khaichonggg/AirTouch/archive/refs/tags/v2.0.0-preview.zip) · [Install from CMD](#install-from-windows-cmd) · [Learn the gestures](#gestures) · [Troubleshoot](#troubleshooting)
 
 ## Why AirTouch?
 
@@ -31,7 +31,7 @@ https://github.com/user-attachments/assets/b2bc5bae-709a-4629-b632-84941c8c85fd
 
 ## Quick install: double-click
 
-1. [Download AirTouch](https://github.com/khaichonggg/AirTouch/archive/refs/heads/main.zip) and **extract the ZIP** to a normal folder. Open the extracted folder containing `install.py` and `setup.bat`.
+1. [Download AirTouch](https://github.com/khaichonggg/AirTouch/archive/refs/tags/v2.0.0-preview.zip) and **extract the ZIP** to a normal folder. Open the extracted folder containing `install.py` and `setup.bat`.
 2. Double-click **`setup.bat`**. It creates a local Python environment, installs the required libraries, and downloads the hand tracking model. Wait for setup to finish.
 3. Double-click **`tray.bat`**. Look for a **grey hand** in the Windows notification area (check the **^** overflow menu). Click it to start tracking. It turns **teal**.
 4. Click the hand icon again to turn tracking off. To close AirTouch completely, right-click the hand and select **Quit**.
